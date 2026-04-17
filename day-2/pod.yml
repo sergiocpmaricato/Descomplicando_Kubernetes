@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: teste-day2
+  name: teste-day2
+spec:
+  containers:
+    - image: alpine
+      name: teste-day2
+      resources:
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
