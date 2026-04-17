@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment
+    fruta: banana
+  name: nginx-deployment
+  namespace: giropops
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      namespace: giropops
+      app: nginx-deployment
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 25%
+# Aqui termina a configuração do deployment
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+        namespace: giropops
+    spec:
+      containers:
+        - image: nginx:1.14.0
+          name: nginx
+          resources:
+            limits:
+              cpu: 0.9
+              memory: 256Mi
+            requests:
+              cpu: 0.4
+              memory: 64Mi
