@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  labels:
+    storage: lento
+  name: pv-giropops
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /DATA/Descomplicando_Kubernetes/day-6/
+  storageClassName: giropops
