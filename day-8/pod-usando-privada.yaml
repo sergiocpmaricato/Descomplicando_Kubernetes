@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "poke-api"
+  namespace: default
+  labels:
+    app: "poke-api"
+spec:
+  imagePullSecrets:
+  - name: dockerhub-test
+  containers:
+  - name: poke-api
+    image: "sergiocpmaricato/poke_api:1.0"
+    env:
+      - name: "pokemon"
+        value: "pikachu"
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+  restartPolicy: Always
